@@ -33,18 +33,17 @@ const resolvers = {
         console.error(`Error:${error}`);
       }
     },
-    updateBook: async (_, { name, year, author, id }) => {
-      return await Books.findByIdAndUpdate(
-        { _id: id },
-        {
-          name,
-          year,
-          author,
-        },
-        {
+    updateBook: async (_, args) => {
+      const {
+        input: { id, ...updateData },
+      } = args;
+      try {
+        return await Books.findByIdAndUpdate({ _id: id }, updateData, {
           new: true,
-        }
-      );
+        });
+      } catch (error) {
+        console.error(`Error:${error}`);
+      }
     },
   },
 };

@@ -14,6 +14,7 @@ const typeDefs = gql`
     name: String!
     year: String!
     author: String!
+    id:ID
   }
   type Mutation {
     createBook(input: BookInput!): Book!
