@@ -5,15 +5,18 @@ const bookSchema = new Schema({
     type: String,
     trim: true,
     lowercase: true,
+    required: true,
   },
   year: {
     type: String,
+    required: true,
   },
   author: {
     type: String,
     trim: true,
     lowecase: true,
+    required: true,
   },
 });
 
-model.exports = model("book", bookSchema);
+module.exports = model("book", bookSchema);
