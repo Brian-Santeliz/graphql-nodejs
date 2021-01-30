@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require("apollo-server");
+const startDatabase = require("./database/connection");
 const books = [
   {
     id: 1,
@@ -45,7 +46,7 @@ const endpoint = new ApolloServer({
   typeDefs,
   resolvers,
 });
-
+startDatabase();
 endpoint
   .listen()
   .then(({ url }) => console.log(`Servidor en el puerto: ${url}`))
