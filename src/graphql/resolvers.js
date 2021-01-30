@@ -19,13 +19,8 @@ const resolvers = {
   },
   Mutation: {
     createBook: async (parent, args, context, info) => {
-      const { name, year, author } = args;
       try {
-        const book = new Books({
-          name,
-          year,
-          author,
-        });
+        const book = new Books(args.input);
         return await book.save();
       } catch (error) {
         console.error(`Error:${error}`);
