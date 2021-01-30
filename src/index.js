@@ -10,11 +10,12 @@ const typeDefs = gql`
     author: String!
   }
   type Query {
-    getBooks: [Book]
-    getBookId(id: ID!): Book
+    getBooks: [Book]!
+    getBookId(id: ID!): Book!
   }
   type Mutation {
     createBook(name: String!, year: String!, author: String!): Book!
+    deleteBook(id: ID!): Book
   }
 `;
 const resolvers = {
@@ -35,6 +36,9 @@ const resolvers = {
         author,
       });
       return await book.save();
+    },
+    deleteBook: async (_, { id }) => {
+      return await Books.findByIdAndRemove({ _id: id });
     },
   },
 };
