@@ -6,6 +6,7 @@ const startDatabase = async function () {
       useFindAndModify: true,
       useUnifiedTopology: true,
       useNewUrlParser: true,
+      useFindAndModify: false,
     });
     console.log("Base de datos conectada");
   } catch (error) {
